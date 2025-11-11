@@ -4,13 +4,16 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
-	counts := make(map[string]int)
+	lineCounts := make(map[string]int)
+	lineFiles := make(map[string]map[string]bool)
+
 	files := os.Args[1:]
 	if len(files) == 0 {
-		countLines(os.Stdin, counts)
+		countLines(os.Stdin, lineCounts, lineFiles, "stdin")
 	} else {
 		for _, arg := range files {
 			f, err := os.Open(arg)
@@ -18,20 +21,37 @@ func main() {
 				fmt.Fprintf(os.Stderr, "dup2: %v\n", err)
 				continue
 			}
-			countLines(f, counts)
+			countLines(f, lineCounts, lineFiles, arg)
 			f.Close()
 		}
 	}
-	for line, n := range counts {
+	for line, n := range lineCounts {
 		if n > 1 {
-			fmt.Printf("%d\t%s\n", n, line)
+			filesMap := lineFiles[line]
+
+			filenames := make([]string, 0, len(filesMap))
+			for filename := range filesMap {
+				filenames = append(filenames, filename)
+			}
+
+			fileList := strings.Join(filenames, ", ")
+
+			fmt.Printf("The line %q appears a total of %d times.\nIt appears in the file(s): %s\n\n", line, n, fileList)
 		}
 	}
 }
 
-func countLines(f *os.File, counts map[string]int) {
+func countLines(f *os.File, lineCounts map[string]int, lineFiles map[string]map[string]bool, filename string) {
 	input := bufio.NewScanner(f)
 	for input.Scan() {
-		counts[input.Text()]++
+		line := input.Text()
+
+		lineCounts[line]++
+
+		if lineFiles[line] == nil {
+			lineFiles[line] = make(map[string]bool)
+		}
+
+		lineFiles[line][filename] = true
 	}
 }
