@@ -1,0 +1,3 @@
+# Exercise 1.10
+
+Find a web site that produces a large amount of data. Investigate caching by running `fetchall` twice in succession to see wheather the reported time changes much. Do you get teh same content each time? Modify `fetchall` to print its output to a file so it can be examined.
