@@ -18,6 +18,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "fetch: %v\n", err)
 			os.Exit(1)
 		}
+		fmt.Printf("Received HTTP status code: %s\n", resp.Status)
 		fmt.Printf("Contents of website %s:\n", url) // Added to see that the updated URL is used.
 		_, err = io.Copy(os.Stdout, resp.Body)
 		resp.Body.Close()
