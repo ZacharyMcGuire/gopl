@@ -1,0 +1,36 @@
+0.30s	    513	http://example.com
+0.48s	  17581	https://google.com
+0.51s	  33470	https://godoc.org
+0.67s	 716530	https://youtube.com
+0.68s	  65599	https://facebook.com
+0.81s	  63009	https://golang.org
+1.07s	   4154	http://gopl.io
+1.67s	 601597	http://newydatalab.com.au
+1.67s elapsed
+0.30s	    513	http://example.com
+0.49s	  33470	https://godoc.org
+0.50s	  17522	https://google.com
+0.52s	  65635	https://facebook.com
+0.64s	 721595	https://youtube.com
+0.84s	  63009	https://golang.org
+0.84s	   4154	http://gopl.io
+1.72s	 601597	http://newydatalab.com.au
+1.72s elapsed
+0.30s	    513	http://example.com
+0.48s	  17445	https://google.com
+0.51s	  33470	https://godoc.org
+0.60s	 717163	https://youtube.com
+0.85s	   4154	http://gopl.io
+0.86s	  63009	https://golang.org
+0.92s	  65633	https://facebook.com
+1.72s	 601597	http://newydatalab.com.au
+1.72s elapsed
+0.30s	    513	http://example.com
+0.49s	  17487	https://google.com
+0.50s	  33470	https://godoc.org
+0.50s	  65917	https://facebook.com
+0.65s	 719523	https://youtube.com
+0.84s	   4154	http://gopl.io
+0.85s	  63009	https://golang.org
+1.67s	 601597	http://newydatalab.com.au
+1.67s elapsed
